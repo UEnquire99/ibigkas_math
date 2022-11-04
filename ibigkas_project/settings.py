@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^3^(7fu=4(j6n35ieqyz@vq4j54mxmy12=-%v38t_k%^fbp6of
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['ibigkas-math.herokuapp.com', '127.0.0.1:8000']
 SESSION_COOKIE_AGE = 3153600000
 
 # Application definition

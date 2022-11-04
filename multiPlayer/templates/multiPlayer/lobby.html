@@ -1,0 +1,74 @@
+{% extends 'multiPlayer/multiPlayerBase.html' %}
+{% block title %}
+    Lobby
+{% endblock %}
+
+{% block content %}
+
+<div class="lobby-container">
+    <div class="title">
+        <h2>Waiting Area</h2>
+    </div>
+    <div class="lobby-body">
+
+        <form action="" id="lobby-form">
+          {% csrf_token %}
+          <div class="user-con">
+                  <p id="user_name">{{user_1}}</p>
+              <button type="submit" id="join_button">join room</button>
+          </div>
+        </form>
+
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="getCodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+          <div class="modal-body">
+              <h1 id="message_error">No group assigned yet</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    var user_uuid= "{{ request.session.uuid }}"
+    $("#lobby-form").on("submit", function(e){
+      e.preventDefault();
+
+        var url = '{% url "multiPlayer:joinRoomAjax" %}'
+        var user = document.getElementById("user_name").innerHTML;
+
+      $.ajax({
+            type:'POST',
+            url:url,
+            data:{
+                user_name: user,
+                studentUUID: user_uuid,
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success : function(data){
+
+              if(data === "No Group"){
+                  $("#getCodeModal").modal('show');
+              }else{
+                console.log(data,"<<<<--");
+              }
+              
+            },
+            error : function(){
+                alert("Ajax Error");
+            }
+
+        });
+    });
+
+</script>
+{% endblock %}

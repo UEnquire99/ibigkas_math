@@ -1,0 +1,1 @@
+web: gunicorn ibigkas_project.wsgi --log-file -

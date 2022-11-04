@@ -1,0 +1,29 @@
+{% extends 'multiPlayer/multiPlayerBase.html' %}
+{% block title %}
+    Ibigkas Math! Multiplayer
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="">
+{% csrf_token %}
+<div class="menu-options">
+    <h1>Multiplayer Menu</h1>
+        <button onclick="host_game()" type="button" id="host-game" name="host-game" class="btn btn-primary">host game</button>
+        <button id="join-game" name="join-game" class="btn btn-primary">join game</button>
+        <button id="how-to-play" name="how-to-play" class="btn btn-primary">how to play</button>
+</div>
+<button type="button" onclick="backMain()" class="btn btn-primary menu-back">back</button>
+
+</form> 
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+    function host_game(){
+        location.href='{% url "multiPlayer:host_game" %}';
+    }
+    function backMain(){
+        location.href='{% url "Assessment:mainPage" %}';
+    }
+</script>
+{% endblock %}

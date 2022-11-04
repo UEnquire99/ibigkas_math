@@ -1,0 +1,42 @@
+{% extends 'multiPlayer/multiPlayerBase.html' %}
+{% block title %}
+    Host Game
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="">
+    {% csrf_token %}
+    <div class="host-game-container">
+        <h1>Host Game</h1>
+        <label for="my-slider">max players: <span id="slider-value">0</span></label>
+        <!-- Range Sliders -->
+        <input type="range" id="my-slider" name="my-slider" class="slider" min="1" max="10" value="1" oninput="slider()"> 
+        <button onclick="start_Lobby()" type="button" name="star-lobby" class="btn btn-primary lobby">start lobby</button>
+    </div>
+    <button onclick="back()" type="button" class="btn btn-primary host-game-back">back</button>
+</form>
+    
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">    
+    const mySlider = document.getElementById("my-slider");
+    const sliderValue = document.getElementById("slider-value");
+    function slider(){
+        valPercent = (mySlider.value / mySlider.max)*10;
+        sliderValue.textContent = mySlider.value;
+    }
+slider();
+
+    function start_Lobby(){
+        location.href='{% url "multiPlayer:lobby" %}';
+    }
+
+    function back(){
+        location.href='{% url "multiPlayer:multiPlayerMenu" %}';
+    }
+
+
+</script>
+
+{% endblock %}

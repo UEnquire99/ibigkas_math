@@ -1,0 +1,70 @@
+{% extends 'multiPlayer/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Ibigkas Math! Multiplayer
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>Multiplayer Menu</h1>
+
+    <div id="menu-options">
+        <button id="host-game">host game</button>
+        <button id="join-game">join game</button>
+        <button id="how-to-play">how to play</button>
+    </div> 
+
+
+    <div id="players">
+
+        <div id="players-header">
+            <h3>Players: </h3>
+        </div>
+
+        <div class="player" id="player-1" >Eugene</div>
+        <div class="player" id="player-2" >Jecko</div>
+
+    </div> 
+
+    <hr>
+    <div id="game-settings">
+        
+        <form id="form">
+
+            <label for="operation-type-setting">Operation:</label> 
+            <select id="operation-type-setting" name="operation-type-setting">
+                <option value="addition">Addition</option>
+                <option value="subtraction">Subtraction</option>
+                <option value="multiplication">Multiplication</option>
+                <option value="division">Division</option>
+            </select>
+
+            <label for="difficulty-setting">Difficulty:</label> 
+            <select id="difficulty-setting" name="difficulty-setting">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select><br/>
+        
+            <label for="speed-setting">Speed:</label><br/>
+            <input type="radio" id="very-slow" name="speed" value="very-slow">
+            <label for="very-slow">Very Slow</label><br>
+            <input type="radio" id="slow" name="speed" value="slow">
+            <label for="slow">Slow</label><br>
+            <input type="radio" id="medium" name="speed" value="medium">
+            <label for="medium">Medium</label><br>
+            <input type="radio" id="fast" name="speed" value="fast">
+            <label for="fast">Fast</label><br>
+            <input type="radio" id="very-fast" name="speed" value="very-fast">
+            <label for="very-fast">Very Fast</label><br>
+            <input type="submit" value="Apply">
+        </form>
+
+    </div>
+    <script src="{% static 'multiPlayer/js/menuOptions.js' %}"></script>
+
+{% endblock %}
+

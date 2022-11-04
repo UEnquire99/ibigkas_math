@@ -1,0 +1,37 @@
+{% extends 'multiPlayer/multiPlayerBase.html' %}
+
+{% block title %}Ibigkas Math{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- sample -->
+<div class="main-container-land">
+    <img src="{% static 'Assessment/img/logo.png' %}" alt="ibigkas logo">
+    <div class="btn-center">
+        <button type="button" onclick="singlePlayer()" class="btn btn-primary">single player</button>
+        <button type="button" onclick="multiplayer()" class="btn btn-primary">multiplayer</button>
+        <button type="button" class="btn btn-primary">settings</button>
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+    console.log("Start");
+    var group = "{{ group }}";
+    var user_uuid= "{{ request.session.uuid }}";
+
+    function singlePlayer(){
+        window.location.replace('/singleplayer/menu-single-player/'+ user_uuid);
+    }
+
+    function multiplayer(){
+
+        if (group == "None"){
+            window.location.replace('/demographics/'+ user_uuid);
+        }else{
+            window.location.replace('/multiplayer/multiplayer-rooms/'+ user_uuid);
+        }
+    }    
+</script>
+{% endblock %}

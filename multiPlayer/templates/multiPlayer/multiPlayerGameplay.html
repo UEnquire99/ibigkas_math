@@ -1,0 +1,20 @@
+{% extends 'multiPlayer/multiPlayerBase.html' %}
+{% load static %}
+{% block title %}
+    TEST LOBBY DJANGO CHANNELS
+{% endblock %}
+
+{% block content %}
+  <h1>GAME: Server and client communication</h1>
+
+  <h3>ROOM NAME: <span id="room-name">{{ room.room_name }}</span></h3>
+  
+  <div id="active-players">
+
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'multiPlayer/js/gameplay.js' %}"></script>
+{% endblock %}

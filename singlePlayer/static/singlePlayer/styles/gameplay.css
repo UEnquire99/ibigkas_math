@@ -1,4 +1,25 @@
-@import url('../styles/mainPage.css');
+@font-face { font-family: Promo-bold; font-weight: bold; src: url('../styles/Promo-Bold.otf'); } 
+@font-face { font-family: Promo-normal; src: url('../styles/Promo-Normal.otf');}
+@font-face { font-family: Promo-semi; src: url('../styles/Promo-SemiBold.otf');}
+
+:root {
+	--body-bg: #fff8e8;
+	--border-color:#e49076;
+
+	--hover-color:#f5f1e5;
+	--hover-second-color:#f58a76;
+	--hover-text-color:#fef8ea;
+
+	--second-color:#086788;
+
+	--text-title-color:#ccc2d9;
+	--text-color:#e49076;
+
+	--text-size:17px;
+	--font-fam-bold:Promo-bold;
+	--font-semi-bold:Promo-semi;
+	--font-fam-normal:Promo-normal;
+  }
 
 .gameplay-container{
   height: 100%;
